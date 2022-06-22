@@ -21,7 +21,7 @@ public class ExpenseService {
         return expenseRepository.findAll();
     }
     // creates one
-    public Expense createExpense(Expense b) {
+    public Expense saveExpense(Expense b) {
         return expenseRepository.save(b);
     }
     // retrieves one
@@ -33,4 +33,5 @@ public class ExpenseService {
             return null;
         }
     }
+
 }
