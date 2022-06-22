@@ -24,12 +24,21 @@
 			</thead>
 			<tbody>
 				<c:forEach var="expense" items="${ expenses }">
-				<tr>
-					<td><c:out value="${ expense.name }" /></td>
-					<td><c:out value="${ expense.vendor }" /></td>
-					<td><c:out value="${ expense.amount }" /></td>
-					<td><a href="/update/${expense.id}">Edit</a></td>
-				</tr>
+					<tr>
+						<td>
+						<a href="/expenses/${ expense.id }"><c:out value="${ expense.name }" /></a>
+						</td>
+						<td><c:out value="${ expense.vendor }" /></td>
+						<td><c:out value="${ expense.amount }" /></td>
+						<td class="d-flex">
+							<a href="/update/${expense.id}">Edit</a>
+							<form action="/delete/${expense.id}" method="post" class="ms-4">
+								<input type="hidden" name="_method" value="delete"> 
+								<input type="submit" value="Delete">
+							</form>
+						</td>
+
+					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
@@ -40,27 +49,27 @@
 					<form:label path="name">Expense name:</form:label>
 					<form:input path="name" />
 					<br />
-					<form:errors path="name" class="text-danger"/>
+					<form:errors path="name" class="text-danger" />
 				</p>
 				<p>
 					<form:label path="vendor">Vendor:</form:label>
 					<form:input path="vendor" />
 					<br />
-					<form:errors path="vendor" class="text-danger"/>
+					<form:errors path="vendor" class="text-danger" />
 				</p>
 				<p>
 					<form:label path="amount">Amount:</form:label>
 					<form:input type="number" path="amount" />
 					<br />
-					<form:errors path="amount" class="text-danger"/>
+					<form:errors path="amount" class="text-danger" />
 				</p>
 				<p>
 					<form:label path="description">Description:</form:label>
 					<form:textarea path="description" />
 					<br />
-					<form:errors path="description" class="text-danger"/>
+					<form:errors path="description" class="text-danger" />
 				</p>
-				<input type="submit" value="Submit" class="btn bg-dark text-light"/>
+				<input type="submit" value="Submit" class="btn bg-dark text-light" />
 			</form:form>
 		</div>
 	</div>
